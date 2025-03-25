@@ -1,5 +1,6 @@
-import { WidgetWrapper } from "../components/WidgetWrapper/WidgetWraper";
+import { Macros } from "../components/Macros/Macros";
 
 export const widgetMap = {
-  'widgetWrapper': WidgetWrapper,
+  widgetWrapper: null,
+  macros: Macros,
 } as const;

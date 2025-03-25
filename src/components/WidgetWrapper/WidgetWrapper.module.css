@@ -1,11 +1,13 @@
 .widgetWrapper {
-    height: 100%;
-    width: 100%;
-    border-radius: 1rem;
-    background: var(--bg-color);
-    grid-row: var(--row-start)/var(--row-end);
-    grid-column: var(--column-start)/var(--column-end);
-    display: grid;
-    align-items: center;
-    justify-items: center;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  border-radius: 1rem;
+  background: var(--bg-color);
+  grid-row: var(--row-start) / var(--row-end);
+  grid-column: var(--column-start) / var(--column-end);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: grid-column linear 0.25ms;
 }

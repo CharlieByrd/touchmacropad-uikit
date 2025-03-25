@@ -1,34 +1,12 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { Grid } from "./Grid";
 import { WidgetWrapper } from "../WidgetWrapper/WidgetWraper";
 import { WidgetWrapperProps } from "../WidgetWrapper/types";
-import { useGridMapper } from "../../hooks/useGridMapper/useGridMapper";
+
+import { Grid } from "./Grid";
+
+import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof Grid> = {
-  //@ts-expect-error
   component: ({ rows, columns, items }) => {
-    useGridMapper({
-      gridConfig: { rows: 3, columns: 5 },
-      gridData: [
-        {
-          startColumn: 1,
-          startRow: 1,
-          size: {
-            height: 2,
-            width: 2,
-          },
-        },
-        {
-          startColumn: 4,
-          startRow: 1,
-          size: {
-            height: 3,
-            width: 1,
-          },
-        },
-      ],
-    });
-
     return (
       <Grid rows={rows} columns={columns}>
         {Array.from(Array(items - 3)).map((_, i) => {
@@ -76,6 +54,7 @@ const meta: Meta<typeof Grid> = {
   args: {
     rows: 3,
     columns: 5,
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-expect-error
     items: 15,
   },

@@ -1,6 +1,8 @@
-
 import { ComponentProps, ComponentType } from "react";
+
 import { widgetMap } from "../constants/widgetMap";
+
+import { BaseWidgetProps } from "./widget.type";
 
 export interface WidgetType<I extends ComponentType> {
   component: I;
@@ -14,7 +16,8 @@ export interface GridItem {
     width: number;
     height: number;
   };
-  widget?: keyof typeof widgetMap;
+  widget: keyof typeof widgetMap;
+  widgetParams: BaseWidgetProps[GridItem["widget"]];
   color?: string;
 }
 

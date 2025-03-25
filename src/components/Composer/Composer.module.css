@@ -1,0 +1,48 @@
+.warnGrid {
+  border: 0.2rem solid red;
+  border-radius: 1rem;
+  padding: 0.4rem;
+}
+
+.composerPlaceholder {
+  border: 2px dashed #000;
+}
+
+.toolbar {
+  background: var(--chakra-colors-blue-400);
+  transition: transform linear 0.3s;
+  transform-origin: right;
+}
+
+.toolbar.closed {
+  transform: scaleX(0);
+}
+
+.controlFocused {
+  border: 2px solid var(--chakra-colors-blue-400);
+}
+
+.control {
+  z-index: 1;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  justify-content: center;
+  white-space: nowrap;
+  border-radius: 1rem;
+  filter: contrast(0.5);
+}
+
+.growRight {
+  flex-direction: column;
+  right: 0;
+  top: 50%;
+  transform: translate(+50%, -30%);
+}
+
+.growBottom {
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, +30%);
+}
