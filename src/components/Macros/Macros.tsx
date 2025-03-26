@@ -19,7 +19,7 @@ export const Macros = (props: MacrosProps) => {
   }, [keys, onWidgetEvent]);
 
   return (
-    <div className={style.macros} onClick={handleClick}>
+    <div className={style.macros} onClick={handleClick} role="button">
       {title ? <Text>{title}</Text> : null}
       <Image draggable="false" src={imageHref} height="80px" />
     </div>

@@ -2,8 +2,9 @@ import { IconButton } from "@chakra-ui/react";
 import clsx from "clsx";
 import {
   Dispatch,
-  MouseEventHandler,
+  MouseEvent as RMouseEvent,
   SetStateAction,
+  TouchEvent as RTouchEvent,
   useCallback,
   useMemo,
 } from "react";
@@ -30,12 +31,25 @@ export const ComposerItem = ({
   getEditControls: (index: number) => WidgetWrapperEditControls;
   children?: React.ReactNode;
 }) => {
-  const onMouseDown: MouseEventHandler<HTMLDivElement> = (event) => {
+  const onMouseDown = (event: RMouseEvent | RTouchEvent) => {
     const target = event.currentTarget as HTMLElement;
     target.classList.add(style.controlFocused);
 
-    const onMouseMove = (event: MouseEvent) => {
-      const toElement = event.target as HTMLElement;
+    const onMouseMove = (event: MouseEvent | TouchEvent) => {
+      let toElement = event.target as HTMLElement;
+
+      if (event.type === "touchmove") {
+        const touchEvent = event as TouchEvent;
+
+        const node = document.elementFromPoint(
+          touchEvent.changedTouches[0].clientX,
+          touchEvent.changedTouches[0].clientY
+        );
+
+        if (node) {
+          toElement = node as HTMLElement;
+        }
+      }
 
       if (toElement.dataset["droppable"] === "true") {
         setGridData((gridData) => {
@@ -56,10 +70,14 @@ export const ComposerItem = ({
 
     const onMouseUp = () => {
       target.classList.remove(style.controlFocused);
+      window.removeEventListener("touchend", onMouseUp);
+      window.removeEventListener("touchmove", onMouseMove);
       window.removeEventListener("mouseup", onMouseUp);
       window.removeEventListener("mousemove", onMouseMove);
     };
 
+    window.addEventListener("touchend", onMouseUp);
+    window.addEventListener("touchmove", onMouseMove);
     window.addEventListener("mouseup", onMouseUp);
     window.addEventListener("mousemove", onMouseMove);
   };
@@ -86,7 +104,7 @@ export const ComposerItem = ({
         });
       }
     },
-    [setGridData, index],
+    [setGridData, index]
   );
 
   const editControls = useMemo(() => {
@@ -123,6 +141,7 @@ export const ComposerItem = ({
   return (
     <WidgetWrapper
       onMouseDown={onMouseDown}
+      onTouchStart={onMouseDown}
       color={item.color}
       rowSize={item.size.height}
       columnSize={item.size.width}
