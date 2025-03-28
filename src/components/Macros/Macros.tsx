@@ -21,7 +21,7 @@ export const Macros = (props: MacrosProps) => {
   return (
     <div className={style.macros} onClick={handleClick} role="button">
       {title ? <Text>{title}</Text> : null}
-      <Image draggable="false" src={imageHref} height="80px" />
+      <Image draggable="false" src={imageHref} width="80px" />
     </div>
   );
 };

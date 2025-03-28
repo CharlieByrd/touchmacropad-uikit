@@ -23,13 +23,13 @@ jobs:
         uses: actions/configure-pages@v5
       - name: Build with Jekyll
         run: |
+          export BASE_URL=${{ steps.deployment.outputs.baseurl }}
           yarn --frozen-lockfile
           yarn build-storybook
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          source: storybook-static/
-          
+          path: storybook-static/
   deploy:
     environment:
       name: github-pages

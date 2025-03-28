@@ -36,7 +36,7 @@ const meta: Meta<typeof Composer> = {
         color: "orange",
         widget: "macros",
         widgetParams: {
-          imageHref: discord,
+          imageHref: 'https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/66e278299a53f5bf88615e90_Symbol.svg',
           title: undefined,
         },
       },
@@ -162,7 +162,7 @@ export const Primary: Story = {
         widget: "macros",
 
         widgetParams: {
-          imageHref: "/src/mocks/assets/icons8-discord-512.png",
+          imageHref: 'https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/66e278299a53f5bf88615e90_Symbol.svg',
           keys: ["cntrl", "alt", "delete"],
         },
       },
