@@ -1,7 +1,6 @@
 import { CheckboxCheckedChangeDetails, Switch } from "@chakra-ui/react";
 import { useState } from "react";
 
-import discord from "../../mocks/assets/icons8-discord-512.png";
 import { TouchContextProvider } from "../TouchContext/TouchContext";
 
 import { Composer } from "./Composer";

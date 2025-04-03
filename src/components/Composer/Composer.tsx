@@ -107,7 +107,7 @@ export const Composer = ({
   }, [gridData, isEditMode, grid, getEditControls, getWidget]);
 
   return (
-    <div>
+    <>
       {gridWarn && <Text color="fg.error">Error: wrong item placement</Text>}
       <Grid
         rows={gridConfig.rows}
@@ -116,6 +116,6 @@ export const Composer = ({
       >
         {gridComponents}
       </Grid>
-    </div>
+    </>
   );
 };

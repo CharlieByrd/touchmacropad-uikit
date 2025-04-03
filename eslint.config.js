@@ -67,7 +67,7 @@ export default tseslint.config(
       "max-len": [
         "error",
         {
-          code: 95,
+          code: 120,
         },
       ],
       "react-refresh/only-export-components": [
